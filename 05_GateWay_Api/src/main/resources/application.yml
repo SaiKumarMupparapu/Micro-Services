@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: GateWay-Api
+  cloud:
+    gateway:
+      routes:
+      - id: Welcome-Api
+        uri: lb://Welcome-Api
+        predicates:
+        - Path=/wel
+      - id: Greet-Api
+        uri: lb://Greet-Api
+        predicates:
+        - Path=/greet
+server:
+  port: 3333
+eureka:
+  client:
+    register-with-eureka: true
