@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: User
+  config:
+    import: optional:configserver:http://localhost:1234
+server:
+  port: 9091
