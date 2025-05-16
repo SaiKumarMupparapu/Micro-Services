@@ -1,5 +1,7 @@
 package com.example.demo.rest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -7,6 +9,7 @@ import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 
 @RestController
 public class DemoRest {
+	
 	
 	@GetMapping("/reddis")
 	@CircuitBreaker(fallbackMethod = "dataFromDB", name = "reddisCircuite")
@@ -17,10 +20,9 @@ public class DemoRest {
 	}
 	
 	
-	public String dataFromDB(Throwable t) {
+	public String dataFromDB(Throwable t) {	
 		System.out.println("-----Data resevived from Database---------");
-
-		return  "-----Data resevived from Database";
+		return  "-----Data received from Database";
 	}
 
 }

@@ -16,14 +16,14 @@ management:
 resilience4j:
   circuitbreaker:
     configs:
-      reddisCircuite:
+      default:
         register-health-indicator: true
         sliding-window-size: 10
         minimum-number-of-calls: 5
-        permitted-number-of-calls-in-half-open-state: 3
+        permitted-number-of-calls-in-half-open-state: 2
         automatic-transition-from-open-to-half-open-enabled: true
-        wait-duration-in-open-state: 100s
-        failure-rate-threshold: 5
-        event-consumer-buffer-size: 6
+        wait-duration-in-open-state: 10s
+        failure-rate-threshold: 30
+        event-consumer-buffer-size: 10
 server:
   port: 2222

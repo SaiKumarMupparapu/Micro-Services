@@ -5,13 +5,17 @@ spring:
     gateway:
       routes:
       - id: Welcome-Api
-        uri: lb://Welcome-Api
+        uri: lb://WELCOME-API
         predicates:
-        - Path=/wel
+        - Path=/api/wel/**
       - id: Greet-Api
         uri: lb://Greet-Api
         predicates:
-        - Path=/greet
+        - Path=/api/gr/**
+      - id: AuthService_Api
+        uri: http://localhost:7071
+        predicates:
+        - Path=/auth/**
 server:
   port: 3333
 eureka:
